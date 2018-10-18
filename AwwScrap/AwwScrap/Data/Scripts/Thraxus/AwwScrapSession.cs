@@ -126,6 +126,52 @@ namespace AwwScrap
         no, you must not touch blocks, most blocks use definition, without copying data all around(edited)
     Thraxus Today at 4:02 AM
         ahh, ok.  will give it a go, thanks! :smile:
+    Phoera  Today at 4:03 AM
+        thou i am not sure, will check how that ever works
+    ThraxusToday at 4:04 AM
+        worst case it doesn't work, i've learned something new, and will have to investigate more.  not a bad outcome even on fail :stuck_out_tongue:
+    Phoera Today at 4:05 AM
+        i just don't see where replacement applied
+    Thraxus Today at 4:06 AM
+        if (targetBlock.CubeGrid.Editable)
+        {
+            targetBlock.DecreaseMountLevel(info.Amount, (MyInventoryBase) this.CharacterInventory, false);
+            if (targetBlock.MoveItemsFromConstructionStockpile((MyInventoryBase) this.CharacterInventory, MyItemFlags.None) && this.Owner.ControllerInfo != null && (this.Owner.ControllerInfo.Controller != null && this.Owner.ControllerInfo.Controller.Player != null))
+              this.SendInventoryFullNotification(this.Owner.ControllerInfo.Controller.Player.Id.SteamId);
+        }
+        (edited)
+        looks like that's what returns items to the player
+        is only hand grinder, but still a clue
+    Phoera Today at 4:07 AM
+        i know, i looked there, but i don't see how that replaces items
+        found
+        must work
+        ThraxusToday at 4:09 AM
+        targetBlock.MoveItemsFromConstructionStockpile((MyInventoryBase) override MyInventoryBase of the block being ground with the new components / deconstruction def, so basically that's what i'll have to modify on init i think?  or did you just find something better?(edited)
+    Phoera Today at 4:10 AM
+        do you remember battery?
+        ThraxusToday at 4:10 AM
+        yeah
+    Phoera Today at 4:10 AM
+        power cell not returned
+    Thraxus Today at 4:10 AM
+                <Component Subtype="EEMPilotSoul" Count="1">
+                  <DeconstructId>
+                    <TypeId>Ore</TypeId>
+                    <SubtypeId>Scrap</SubtypeId>
+                  </DeconstructId>
+                </Component>
+    Phoera Today at 4:10 AM
+        you just need to do same, but in runtime
+    Thraxus Today at 4:10 AM
+        yeah
+        we do that for pilot soul in EEM(edited)
+        but in def, not in runtime
+    Phoera Today at 4:10 AM
+        for that you must just get all block definition from MyDefinitionManager and adjust them
+        it will apply and work itself
+    Thraxus Today at 4:11 AM
+        wonderful, i like it
  *
  *
  *

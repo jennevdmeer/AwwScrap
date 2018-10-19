@@ -113,12 +113,7 @@
   <ItemGroup>
     <Compile Include="AwwScrap\Data\Scripts\Thraxus\AwwScrapSession.cs" />
     <Compile Include="AwwScrap\Data\Scripts\Thraxus\Helpers\Constants.cs" />
-    <Compile Include="AwwScrap\Data\Scripts\Thraxus\Networking\ChatMessages.cs" />
-    <Compile Include="AwwScrap\Data\Scripts\Thraxus\Networking\MessageBase.cs" />
-    <Compile Include="AwwScrap\Data\Scripts\Thraxus\Networking\Messaging.cs" />
     <Compile Include="AwwScrap\Data\Scripts\Thraxus\Utilities\Log.cs" />
-    <Compile Include="AwwScrap\Data\Scripts\Thraxus\Utilities\Profiler.cs" />
-    <Compile Include="AwwScrap\Data\Scripts\Thraxus\Utilities\Queue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

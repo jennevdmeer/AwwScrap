@@ -113,8 +113,23 @@
   <ItemGroup>
     <Compile Include="AwwScrap\Data\Scripts\Thraxus\AwwScrapSession.cs" />
     <Compile Include="AwwScrap\Data\Scripts\Thraxus\Helpers\Constants.cs" />
+    <Compile Include="AwwScrap\Data\Scripts\Thraxus\Helpers\Definitions.cs" />
     <Compile Include="AwwScrap\Data\Scripts\Thraxus\Utilities\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AwwScrap\Data\CustomParts.sbc" />
+    <None Include="AwwScrap\Data\Models\Components\Scrap1.mwm" />
+    <None Include="AwwScrap\Data\Models\Components\Scrap10.mwm" />
+    <None Include="AwwScrap\Data\Models\Components\Scrap11.mwm" />
+    <None Include="AwwScrap\Data\Models\Components\Scrap2.mwm" />
+    <None Include="AwwScrap\Data\Models\Components\Scrap3.mwm" />
+    <None Include="AwwScrap\Data\Models\Components\Scrap4.mwm" />
+    <None Include="AwwScrap\Data\Models\Components\Scrap5.mwm" />
+    <None Include="AwwScrap\Data\Models\Components\Scrap6.mwm" />
+    <None Include="AwwScrap\Data\Models\Components\Scrap7.mwm" />
+    <None Include="AwwScrap\Data\Models\Components\Scrap8.mwm" />
+    <None Include="AwwScrap\Data\Models\Components\Scrap9.mwm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

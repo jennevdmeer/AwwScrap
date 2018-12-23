@@ -1,4 +1,5 @@
-﻿using AwwScrap.Helpers;
+﻿using System.Collections.Generic;
+using AwwScrap.Helpers;
 using AwwScrap.Utilities;
 using Sandbox.Definitions;
 using Sandbox.ModAPI;
@@ -44,39 +45,69 @@ namespace AwwScrap
 			MyAPIGateway.Parallel.StartBackground(ScrubCubes);
 		}
 
+		private static Dictionary<MyStringHash, string> ComponentDictionary = new Dictionary<MyStringHash, string>
+		{
+			{ MyStringHash.GetOrCompute("BulletproofGlass"), "BulletproofGlassScrap" },
+			{ MyStringHash.GetOrCompute("Computer"), "ComputerScrap" },
+			{ MyStringHash.GetOrCompute("Construction"), "ConstructionScrap" },
+			{ MyStringHash.GetOrCompute("Detector"), "DetectorScrap" },
+			{ MyStringHash.GetOrCompute("Display"), "DisplayScrap" },
+			{ MyStringHash.GetOrCompute("Explosives"), "ExplosivesScrap" },
+			{ MyStringHash.GetOrCompute("Girder"), "GirderScrap" },
+			{ MyStringHash.GetOrCompute("GravityGenerator"), "GravityGeneratorScrap" },
+			{ MyStringHash.GetOrCompute("InteriorPlate"), "InteriorPlateScrap" },
+			{ MyStringHash.GetOrCompute("LargeTube"), "LargeTubeScrap" },
+			{ MyStringHash.GetOrCompute("Medical"), "MedicalScrap" },
+			{ MyStringHash.GetOrCompute("MetalGrid"), "MetalGridScrap" },
+			{ MyStringHash.GetOrCompute("Motor"), "MotorScrap" },
+			{ MyStringHash.GetOrCompute("PowerCell"), "PowerCellScrap" },
+			{ MyStringHash.GetOrCompute("RadioCommunication"), "RadioCommunicationScrap" },
+			{ MyStringHash.GetOrCompute("Reactor"), "ReactorScrap" },
+			{ MyStringHash.GetOrCompute("SmallTube"), "SmallTubeScrap" },
+			{ MyStringHash.GetOrCompute("SolarCell"), "SolarCellScrap" },
+			{ MyStringHash.GetOrCompute("SteelPlate"), "SteelPlateScrap" },
+			{ MyStringHash.GetOrCompute("Superconductor"), "SuperconductorScrap" },
+			{ MyStringHash.GetOrCompute("Thrust"), "ThrustScrap" }
+		};
+
 		private static void ScrubCubes()
 		{
 			MyPhysicalItemDefinition scrapDef = MyDefinitionManager.Static.GetPhysicalItemDefinition(new MyDefinitionId(typeof(MyObjectBuilder_Ore), "Scrap"));
-			MyPhysicalItemDefinition smallSteelTubeScrap = MyDefinitionManager.Static.GetPhysicalItemDefinition(new MyDefinitionId(typeof(MyObjectBuilder_Ore), "SmallSteelTubeScrap"));
-			MyPhysicalItemDefinition thrusterScrap = MyDefinitionManager.Static.GetPhysicalItemDefinition(new MyDefinitionId(typeof(MyObjectBuilder_Ore), "ThrustScrap"));
 			foreach (MyDefinitionBase myDefinitionBase in MyDefinitionManager.Static.GetAllDefinitions())
 			{
 				MyCubeBlockDefinition myCubeBlockDefinition = myDefinitionBase as MyCubeBlockDefinition;
 				if (myCubeBlockDefinition?.Components == null) continue;
-				GeneralLog.WriteToLog("ScrubCubes",$"{myCubeBlockDefinition.Id}"); 
+
+				//GeneralLog.WriteToLog("ScrubCubes",$"{myCubeBlockDefinition.Id}"); 
+
 				foreach (MyCubeBlockDefinition.Component component in myCubeBlockDefinition.Components)
 				{
 					GeneralLog.WriteToLog("ScrubCubes", $"{component.Definition.Id.SubtypeId}");
+
 					if (!component.Definition.Public)
 						continue;
-					if (component.Definition.Context == MyModContext.BaseGame)
+					
+					string subtypeName;
+					if (ComponentDictionary.TryGetValue(component.Definition.Id.SubtypeId, out subtypeName))
 					{
-						component.DeconstructItem = scrapDef;
+						component.DeconstructItem = MyDefinitionManager.Static.GetPhysicalItemDefinition(new MyDefinitionId(typeof(MyObjectBuilder_Ore), subtypeName));
 						continue;
 					}
-					if (component.Definition.Id.SubtypeId == MyStringHash.GetOrCompute("SmallTube"))
-					{
-						GeneralLog.WriteToLog("ScrubCubes", $"Replaced Small Steel Tube");
-						component.DeconstructItem = smallSteelTubeScrap;
-						continue;
-					}
-					if (component.Definition.Id.SubtypeId == MyStringHash.GetOrCompute("Thrust"))
-					{
-						GeneralLog.WriteToLog("ScrubCubes", $"Replaced Thrusters");
-						component.DeconstructItem = thrusterScrap;
-						continue;
-					}
-					component.DeconstructItem = scrapDef;
+
+					component.DeconstructItem = scrapDef; 
+					//if (component.Definition.Id.SubtypeId == MyStringHash.GetOrCompute("SmallTube"))
+					//{
+					//	GeneralLog.WriteToLog("ScrubCubes", $"Replaced Small Steel Tube");
+					//	component.DeconstructItem = smallSteelTubeScrap;
+					//	continue;
+					//}
+					//if (component.Definition.Id.SubtypeId == MyStringHash.GetOrCompute("Thrust"))
+					//{
+					//	GeneralLog.WriteToLog("ScrubCubes", $"Replaced Thrusters");
+					//	component.DeconstructItem = thrusterScrap;
+					//	continue;
+					//}
+					//component.DeconstructItem = scrapDef;
 				}
 			}
 		}

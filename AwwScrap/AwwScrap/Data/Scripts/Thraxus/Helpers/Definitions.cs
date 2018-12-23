@@ -47,6 +47,10 @@ namespace AwwScrap.AwwScrap.Data.Scripts.Thraxus.Helpers
 		 *		0.33 Iron, 1.67 Silicon
 		 *		Scrap 8 @ 0.2475 Iron, 1.2525 Silicon
 		 *
+		 * Explosives: 
+		 *		0.17 Silicon, 0.67 Magnesium
+		 *		Scrap 9 @ 0.2475 Iron, 1.2525 Silicon
+		 *
 		 * Girder: 
 		 *		2.33 Iron
 		 *		Scrap 12 @ 1.7475 Iron
@@ -106,6 +110,53 @@ namespace AwwScrap.AwwScrap.Data.Scripts.Thraxus.Helpers
 		 * Thruster Component: 
 		 *		10 Iron, 3.33 Cobalt, 0.33 Gold, 0.13 Platinum 
 		 *		Scrap 4 @ 7.5 Iron, 2.4975 Cobalt, 0.2475 Gold, 0.0975 Platinum
+		 *
+		 	{ MyStringHash.GetOrCompute("BulletproofGlass"), "BulletproofGlassScrap" },
+			{ MyStringHash.GetOrCompute("Computer"), "ComputerScrap" },
+			{ MyStringHash.GetOrCompute("Construction"), "ConstructionScrap" },
+			{ MyStringHash.GetOrCompute("Detector"), "DetectorScrap" },
+			{ MyStringHash.GetOrCompute("Display"), "DisplayScrap" },
+			{ MyStringHash.GetOrCompute("Explosives"), "ExplosivesScrap" },
+			{ MyStringHash.GetOrCompute("Girder"), "GirderScrap" },
+			{ MyStringHash.GetOrCompute("GravityGenerator"), "GravityGeneratorScrap" },
+			{ MyStringHash.GetOrCompute("InteriorPlate"), "InteriorPlateScrap" },
+			{ MyStringHash.GetOrCompute("LargeTube"), "LargeTubeScrap" },
+			{ MyStringHash.GetOrCompute("Medical"), "MedicalScrap" },
+			{ MyStringHash.GetOrCompute("MetalGrid"), "MetalGridScrap" },
+			{ MyStringHash.GetOrCompute("Motor"), "MotorScrap" },
+			{ MyStringHash.GetOrCompute("PowerCell"), "PowerCellScrap" },
+			{ MyStringHash.GetOrCompute("RadioCommunication"), "RadioCommunicationScrap" },
+			{ MyStringHash.GetOrCompute("Reactor"), "ReactorScrap" },
+			{ MyStringHash.GetOrCompute("SmallTube"), "SmallTubeScrap" },
+			{ MyStringHash.GetOrCompute("SolarCell"), "SolarCellScrap" },
+			{ MyStringHash.GetOrCompute("SteelPlate"), "SteelPlateScrap" },
+			{ MyStringHash.GetOrCompute("Superconductor"), "SuperconductorScrap" },
+			{ MyStringHash.GetOrCompute("Thrust"), "ThrustScrap" }
+
+			<BlueprintClassEntries>
+				<Entry Class="Ingots" BlueprintSubtypeId="BulletproofGlassToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="ComputerToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="ConstructionToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="DetectorToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="DisplayToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="ExplosivesToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="GirderToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="GravityGeneratorToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="InteriorPlateToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="LargeTubeToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="MedicalToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="MetalGridToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="MotorToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="PowerCellToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="RadioCommunicationToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="ReactorToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="SmallTubeToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="SolarCellToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="SteelPlateToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="SuperconductorToIngot" />
+				<Entry Class="Ingots" BlueprintSubtypeId="ThrustToIngot" />
+			</BlueprintClassEntries>
+		 *
 		 */
 	}
 }

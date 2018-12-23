@@ -44,9 +44,9 @@
 		<PhysicalItem>
 			<Id>
 				<TypeId>Ore</TypeId>
-				<SubtypeId>ConstructionComponentScrap</SubtypeId>
+				<SubtypeId>ConstructionScrap</SubtypeId>
 			</Id>
-			<DisplayName>Construction Component Scrap</DisplayName>
+			<DisplayName>Construction Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Size>
 				<X>0.2</X>
@@ -63,7 +63,7 @@
 		<PhysicalItem>
 			<Id>
 				<TypeId>Ore</TypeId>
-				<SubtypeId>DetectorComponentScrap</SubtypeId>
+				<SubtypeId>DetectorScrap</SubtypeId>
 			</Id>
 			<DisplayName>Detector Component Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
@@ -97,6 +97,25 @@
 			<PhysicalMaterial>Metal</PhysicalMaterial>
 		</PhysicalItem>
 
+		<!-- Explosives -->
+		<PhysicalItem>
+			<Id>
+				<TypeId>Ore</TypeId>
+				<SubtypeId>ExplosivesScrap</SubtypeId>
+			</Id>
+			<DisplayName>Explosives Scrap</DisplayName>
+			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
+			<Size>
+				<X>0.2</X>
+				<Y>0.2</Y>
+				<Z>0.1</Z>
+			</Size>
+			<Mass>1</Mass>
+			<Volume>0.254</Volume>
+			<Model>Data\Models\Components\Scrap9.mwm</Model>
+			<PhysicalMaterial>Metal</PhysicalMaterial>
+		</PhysicalItem>
+
 		<!-- Girder -->
 		<PhysicalItem>
 			<Id>
@@ -120,9 +139,9 @@
 		<PhysicalItem>
 			<Id>
 				<TypeId>Ore</TypeId>
-				<SubtypeId>GravityComponentScrap</SubtypeId>
+				<SubtypeId>GravityGeneratorScrap</SubtypeId>
 			</Id>
-			<DisplayName>Gravity Component Scrap</DisplayName>
+			<DisplayName>Gravity Generator Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Size>
 				<X>0.2</X>
@@ -158,7 +177,7 @@
 		<PhysicalItem>
 			<Id>
 				<TypeId>Ore</TypeId>
-				<SubtypeId>LargeSteelTubeScrap</SubtypeId>
+				<SubtypeId>LargeTubeScrap</SubtypeId>
 			</Id>
 			<DisplayName>Large Steel Tube Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
@@ -177,9 +196,9 @@
 		<PhysicalItem>
 			<Id>
 				<TypeId>Ore</TypeId>
-				<SubtypeId>MedicalComponentScrap</SubtypeId>
+				<SubtypeId>MedicalScrap</SubtypeId>
 			</Id>
-			<DisplayName>Medical Component Scrap</DisplayName>
+			<DisplayName>Medical Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Size>
 				<X>0.2</X>
@@ -253,9 +272,9 @@
 		<PhysicalItem>
 			<Id>
 				<TypeId>Ore</TypeId>
-				<SubtypeId>RadioScrap</SubtypeId>
+				<SubtypeId>RadioCommunicationScrap</SubtypeId>
 			</Id>
-			<DisplayName>Radio-comm Scrap</DisplayName>
+			<DisplayName>Radio Communication Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Size>
 				<X>0.2</X>
@@ -272,9 +291,9 @@
 		<PhysicalItem>
 			<Id>
 				<TypeId>Ore</TypeId>
-				<SubtypeId>ReactorComponentScrap</SubtypeId>
+				<SubtypeId>ReactorScrap</SubtypeId>
 			</Id>
-			<DisplayName>Reactor Component Scrap</DisplayName>
+			<DisplayName>Reactor Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Size>
 				<X>0.2</X>
@@ -291,7 +310,7 @@
 		<PhysicalItem>
 			<Id>
 				<TypeId>Ore</TypeId>
-				<SubtypeId>SmallSteelTubeScrap</SubtypeId>
+				<SubtypeId>SmallTubeScrap</SubtypeId>
 			</Id>
 			<DisplayName>Small Steel Tube Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
@@ -429,12 +448,12 @@
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
-				<SubtypeId>ConstructionComponentToIngot</SubtypeId>
+				<SubtypeId>ConstructionToIngot</SubtypeId>
 			</Id>
 			<DisplayName>Construction Component Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Prerequisites>
-				<Item Amount="1" TypeId="Ore" SubtypeId="ConstructionComponentScrap" />
+				<Item Amount="1" TypeId="Ore" SubtypeId="ConstructionScrap" />
 			</Prerequisites>
 			<Results>
 				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Iron" />
@@ -449,12 +468,12 @@
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
-				<SubtypeId>DetectorComponentToIngot</SubtypeId>
+				<SubtypeId>DetectorToIngot</SubtypeId>
 			</Id>
 			<DisplayName>Detector Component Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Prerequisites>
-				<Item Amount="1" TypeId="Ore" SubtypeId="DetectorComponentScrap" />
+				<Item Amount="1" TypeId="Ore" SubtypeId="DetectorScrap" />
 			</Prerequisites>
 			<Results>
 				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Iron" />
@@ -489,6 +508,25 @@
 			<BaseProductionTimeInSeconds>0.04</BaseProductionTimeInSeconds>
 		</Blueprint>
 
+		<!-- Explosives -->
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>ExplosivesToIngot</SubtypeId>
+			</Id>
+			<DisplayName>Explosives Scrap</DisplayName>
+			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
+			<Prerequisites>
+				<Item Amount="1" TypeId="Ore" SubtypeId="ExplosivesScrap" />
+			</Prerequisites>
+			<Results>
+				<Item Amount="0.0797" TypeId="Ingot" SubtypeId="Magnesium" />
+
+				<Item Amount="0.3141" TypeId="Ingot" SubtypeId="Silicon" />
+			</Results>	
+			<BaseProductionTimeInSeconds>0.04</BaseProductionTimeInSeconds>
+		</Blueprint>
+
 		<!-- Girder -->
 		<Blueprint>
 			<Id>
@@ -512,12 +550,12 @@
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
-				<SubtypeId>GravityComponentToIngot</SubtypeId>
+				<SubtypeId>GravityGeneratorToIngot</SubtypeId>
 			</Id>
-			<DisplayName>Gravity Component Scrap</DisplayName>
+			<DisplayName>Gravity Generator Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Prerequisites>
-				<Item Amount="1" TypeId="Ore" SubtypeId="GravityComponentScrap" />
+				<Item Amount="1" TypeId="Ore" SubtypeId="GravityGeneratorScrap" />
 			</Prerequisites>
 			<Results>
 				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Iron" />
@@ -812,12 +850,12 @@
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
-				<SubtypeId>LargeSteelTubeToIngot</SubtypeId>
+				<SubtypeId>LargeTubeToIngot</SubtypeId>
 			</Id>
 			<DisplayName>Large Steel Tube Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Prerequisites>
-				<Item Amount="1" TypeId="Ore" SubtypeId="LargeSteelTubeScrap" />
+				<Item Amount="1" TypeId="Ore" SubtypeId="LargeTubeScrap" />
 			</Prerequisites>
 			<Results>
 				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Iron" />
@@ -838,12 +876,12 @@
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
-				<SubtypeId>MedicalComponentToIngot</SubtypeId>
+				<SubtypeId>MedicalToIngot</SubtypeId>
 			</Id>
 			<DisplayName>Medical Component Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Prerequisites>
-				<Item Amount="1" TypeId="Ore" SubtypeId="MedicalComponentScrap" />
+				<Item Amount="1" TypeId="Ore" SubtypeId="MedicalScrap" />
 			</Prerequisites>
 			<Results>
 				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Iron" />
@@ -979,12 +1017,12 @@
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
-				<SubtypeId>RadioToIngot</SubtypeId>
+				<SubtypeId>RadioCommunicationToIngot</SubtypeId>
 			</Id>
-			<DisplayName>Radio-comm Component Scrap</DisplayName>
+			<DisplayName>Radio Communication Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Prerequisites>
-				<Item Amount="1" TypeId="Ore" SubtypeId="RadioScrap" />
+				<Item Amount="1" TypeId="Ore" SubtypeId="RadioCommunicationScrap" />
 			</Prerequisites>
 			<Results>
 				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Iron" />
@@ -1000,12 +1038,12 @@
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
-				<SubtypeId>ReactorComponentToIngot</SubtypeId>
+				<SubtypeId>ReactorToIngot</SubtypeId>
 			</Id>
 			<DisplayName>Reactor Component Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Prerequisites>
-				<Item Amount="1" TypeId="Ore" SubtypeId="ReactorComponentScrap" />
+				<Item Amount="1" TypeId="Ore" SubtypeId="ReactorScrap" />
 			</Prerequisites>
 			<Results>
 				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Iron" />
@@ -1032,12 +1070,12 @@
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
-				<SubtypeId>SmallSteelTubeToIngot</SubtypeId>
+				<SubtypeId>SmallTubeToIngot</SubtypeId>
 			</Id>
 			<DisplayName>Small Steel Tube Scrap</DisplayName>
 			<Icon>Textures\GUI\Icons\component\ScrapMetalComponent.dds</Icon>
 			<Prerequisites>
-				<Item Amount="1" TypeId="Ore" SubtypeId="SmallSteelTubeScrap" />
+				<Item Amount="1" TypeId="Ore" SubtypeId="SmallTubeScrap" />
 			</Prerequisites>
 			<Results>
 				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Iron" />
@@ -1155,25 +1193,25 @@
 	<BlueprintClassEntries>
 		<Entry Class="Ingots" BlueprintSubtypeId="BulletproofGlassToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="ComputerToIngot" />
-		<Entry Class="Ingots" BlueprintSubtypeId="ConstructionComponentToIngot" />
-		<Entry Class="Ingots" BlueprintSubtypeId="DetectorComponentToIngot" />
+		<Entry Class="Ingots" BlueprintSubtypeId="ConstructionToIngot" />
+		<Entry Class="Ingots" BlueprintSubtypeId="DetectorToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="DisplayToIngot" />
+		<Entry Class="Ingots" BlueprintSubtypeId="ExplosivesToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="GirderToIngot" />
-		<Entry Class="Ingots" BlueprintSubtypeId="GravityComponentToIngot" />
+		<Entry Class="Ingots" BlueprintSubtypeId="GravityGeneratorToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="InteriorPlateToIngot" />
-		<Entry Class="Ingots" BlueprintSubtypeId="LargeSteelTubeToIngot" />
-		<Entry Class="Ingots" BlueprintSubtypeId="MedicalComponentToIngot" />
+		<Entry Class="Ingots" BlueprintSubtypeId="LargeTubeToIngot" />
+		<Entry Class="Ingots" BlueprintSubtypeId="MedicalToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="MetalGridToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="MotorToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="PowerCellToIngot" />
-		<Entry Class="Ingots" BlueprintSubtypeId="RadioToIngot" />
-		<Entry Class="Ingots" BlueprintSubtypeId="ReactorComponentToIngot" />
-		<Entry Class="Ingots" BlueprintSubtypeId="SmallSteelTubeToIngot" />
+		<Entry Class="Ingots" BlueprintSubtypeId="RadioCommunicationToIngot" />
+		<Entry Class="Ingots" BlueprintSubtypeId="ReactorToIngot" />
+		<Entry Class="Ingots" BlueprintSubtypeId="SmallTubeToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="SolarCellToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="SteelPlateToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="SuperconductorToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="ThrustToIngot" />
-		
 	</BlueprintClassEntries>
 	
 </Definitions>

@@ -1212,6 +1212,23 @@
 		<Entry Class="Ingots" BlueprintSubtypeId="SteelPlateToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="SuperconductorToIngot" />
 		<Entry Class="Ingots" BlueprintSubtypeId="ThrustToIngot" />
+
+    <Entry Class="CommonMetals" BlueprintSubtypeId="BulletproofGlassToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="ComputerToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="ConstructionToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="DetectorToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="DisplayToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="ExplosivesToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="GirderToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="InteriorPlateToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="LargeTubeToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="MetalGridToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="MotorToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="PowerCellToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="RadioCommunicationToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="SmallTubeToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="SolarCellToIngot" />
+    <Entry Class="CommonMetals" BlueprintSubtypeId="SteelPlateToIngot" />
 	</BlueprintClassEntries>
 	
 </Definitions>

@@ -137,7 +137,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AwwScrap\Data\CustomParts.sbc" />
+    <None Include="AwwScrap\Data\DefenseShieldsComponents.sbc" />
+    <None Include="AwwScrap\Data\EweCompatibility.sbc" />
+    <None Include="AwwScrap\Data\ModComponentSupport.sbc" />
     <None Include="AwwScrap\Data\Models\Components\Scrap1.mwm" />
     <None Include="AwwScrap\Data\Models\Components\Scrap10.mwm" />
     <None Include="AwwScrap\Data\Models\Components\Scrap11.mwm" />
@@ -149,6 +151,7 @@
     <None Include="AwwScrap\Data\Models\Components\Scrap7.mwm" />
     <None Include="AwwScrap\Data\Models\Components\Scrap8.mwm" />
     <None Include="AwwScrap\Data\Models\Components\Scrap9.mwm" />
+    <None Include="AwwScrap\Data\VanillaComponents.sbc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

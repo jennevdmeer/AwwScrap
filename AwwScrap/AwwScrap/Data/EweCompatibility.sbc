@@ -29,7 +29,6 @@
     <Entry Class="AdvRefining" BlueprintSubtypeId="ConstructionToIngot" />
     <Entry Class="AdvRefining" BlueprintSubtypeId="DetectorToIngot" />
     <Entry Class="AdvRefining" BlueprintSubtypeId="DisplayToIngot" />
-    <Entry Class="AdvRefining" BlueprintSubtypeId="ExplosivesToIngot" />
     <Entry Class="AdvRefining" BlueprintSubtypeId="GirderToIngot" />
     <Entry Class="AdvRefining" BlueprintSubtypeId="InteriorPlateToIngot" />
     <Entry Class="AdvRefining" BlueprintSubtypeId="LargeTubeToIngot" />

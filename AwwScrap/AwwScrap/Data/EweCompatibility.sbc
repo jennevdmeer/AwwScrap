@@ -43,6 +43,7 @@
     <Entry Class="BscRefining" BlueprintSubtypeId="ComputerToIngot" />
     <Entry Class="BscRefining" BlueprintSubtypeId="ConstructionToIngot" />
     <Entry Class="BscRefining" BlueprintSubtypeId="DisplayToIngot" />
+    <Entry Class="BscRefining" BlueprintSubtypeId="GirderToIngot" />
     <Entry Class="BscRefining" BlueprintSubtypeId="InteriorPlateToIngot" />
     <Entry Class="BscRefining" BlueprintSubtypeId="MotorToIngot" />
     <Entry Class="BscRefining" BlueprintSubtypeId="PowerCellToIngot" />

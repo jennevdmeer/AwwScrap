@@ -828,6 +828,7 @@
 		<Entry Class="BasicComponents" BlueprintSubtypeId="ComputerToIngot" />
 		<Entry Class="BasicComponents" BlueprintSubtypeId="ConstructionToIngot" />
 		<Entry Class="BasicComponents" BlueprintSubtypeId="DisplayToIngot" />
+    <Entry Class="BasicComponents" BlueprintSubtypeId="GirderToIngot" />
 		<Entry Class="BasicComponents" BlueprintSubtypeId="InteriorPlateToIngot" />
 		<Entry Class="BasicComponents" BlueprintSubtypeId="MotorToIngot" />
 		<Entry Class="BasicComponents" BlueprintSubtypeId="PowerCellToIngot" />

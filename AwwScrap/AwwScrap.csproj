@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AwwScrap\Data\DefenseShieldsComponents.sbc" />
+    <None Include="AwwScrap\Data\SplitsieQoLRefineryChange.sbc" />
     <None Include="AwwScrap\Data\EweCompatibility.sbc" />
     <None Include="AwwScrap\Data\ModComponentSupport.sbc" />
     <None Include="AwwScrap\Data\Models\Components\Scrap1.mwm" />

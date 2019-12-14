@@ -3,8 +3,7 @@
 
 	<PhysicalItems>
 
-     Bulletproof Glass 
-		<PhysicalItem>
+     <PhysicalItem>
 			<Id>
 				<TypeId>Ore</TypeId>
 				<SubtypeId>FieldEmitterScrap</SubtypeId>

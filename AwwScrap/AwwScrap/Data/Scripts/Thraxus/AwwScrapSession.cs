@@ -98,6 +98,8 @@ namespace AwwScrap
 			MyStringHash.GetOrCompute("ThrustToIngot")
 		};
 
+		private static bool _skipTieredTech = true;
+
 		private static void ScrubCubes()
 		{
 			// This loop accounts for World Settings for the Assembler Efficiency Modifier (x1, x3, x10)
@@ -115,7 +117,7 @@ namespace AwwScrap
 			
 			MyPhysicalItemDefinition scrapDef = MyDefinitionManager.Static.GetPhysicalItemDefinition(new MyDefinitionId(typeof(MyObjectBuilder_Ore), "Scrap"));
 			
-			foreach (MyCubeBlockDefinition myCubeBlockDefinition in MyDefinitionManager.Static.GetAllDefinitions().Select(myDefinitionBase => myDefinitionBase as MyCubeBlockDefinition).Where(myCubeBlockDefinition => myCubeBlockDefinition?.Components != null))
+			foreach (MyCubeBlockDefinition myCubeBlockDefinition in MyDefinitionManager.Static.GetAllDefinitions().OfType<MyCubeBlockDefinition>().Where(myCubeBlockDefinition => myCubeBlockDefinition?.Components != null))
 			{
 				foreach (MyCubeBlockDefinition.Component component in myCubeBlockDefinition.Components)
 				{
@@ -130,6 +132,10 @@ namespace AwwScrap
 						component.DeconstructItem = MyDefinitionManager.Static.GetPhysicalItemDefinition(new MyDefinitionId(typeof(MyObjectBuilder_Ore), subtypeName));
 						continue;
 					}
+
+					if (_skipTieredTech)
+						if (component.Definition.Id.SubtypeId.ToString() == "Tech2x" || component.Definition.Id.SubtypeId.ToString() == "Tech4x" || component.Definition.Id.SubtypeId.ToString() == "Tech8x")
+							continue;
 					component.DeconstructItem = scrapDef;
 				}
 			}

@@ -23,5 +23,7 @@
     <Entry Class="RecycledScrap" BlueprintSubtypeId="SteelPlateToIngot" />
     <Entry Class="RecycledScrap" BlueprintSubtypeId="SuperconductorToIngot" />
     <Entry Class="RecycledScrap" BlueprintSubtypeId="ThrustToIngot" />
+
+    <Entry Class="RecycledScrap" BlueprintSubtypeId="ShieldComponentToIngot" />
   </BlueprintClassEntries>
 </Definitions>

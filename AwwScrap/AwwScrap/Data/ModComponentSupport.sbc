@@ -7,8 +7,8 @@
   This covers the complete definition list required to setup AwwScrap for a new mod.  
   Must remember to modify the definition setup in AwwScrapSession.cs as well; this just makes the items usable.
   Entry Class="Ingots" = Normal Refinery
-  Entry Class="Ingots" = Basic Refinery
-  Entry Class="Ingots" = SKit
+  Entry Class="CommonMetals" = Basic Refinery
+  Entry Class="BasicIngots" = SKit
   
   
   Template Below using BulletProofGlass as an example - all items are required!

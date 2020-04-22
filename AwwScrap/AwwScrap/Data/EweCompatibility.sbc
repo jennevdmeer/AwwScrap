@@ -24,6 +24,8 @@
     <Entry Class="EliRefining" BlueprintSubtypeId="SuperconductorToIngot" />
     <Entry Class="EliRefining" BlueprintSubtypeId="ThrustToIngot" />
 
+    <Entry Class="EliRefining" BlueprintSubtypeId="ShieldComponentToIngot" />
+
     <Entry Class="AdvRefining" BlueprintSubtypeId="BulletproofGlassToIngot" />
     <Entry Class="AdvRefining" BlueprintSubtypeId="ComputerToIngot" />
     <Entry Class="AdvRefining" BlueprintSubtypeId="ConstructionToIngot" />

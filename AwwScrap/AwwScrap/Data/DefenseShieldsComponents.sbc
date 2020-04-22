@@ -48,8 +48,8 @@
 
 	<BlueprintClassEntries>
 
-		<Entry Class="Ingots" BlueprintSubtypeId="ShieldComponentToIngot" /> 
+    <Entry Class="Ingots" BlueprintSubtypeId="ShieldComponentToIngot" />
 
-	</BlueprintClassEntries>
+  </BlueprintClassEntries>
 	
 </Definitions>

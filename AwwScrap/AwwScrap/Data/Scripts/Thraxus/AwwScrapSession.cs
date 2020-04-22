@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using AwwScrap.Helpers;
 using AwwScrap.Utilities;
 using Sandbox.Definitions;
@@ -7,12 +6,11 @@ using Sandbox.ModAPI;
 using VRage;
 using VRage.Game;
 using VRage.Game.Components;
-using VRage.Utils;
+using AwwScrap.Support;
 
 namespace AwwScrap
 {
 	[MySessionComponentDescriptor(MyUpdateOrder.NoUpdate)]
-	// ReSharper disable once ClassNeverInstantiated.Global
 	public class AwwScrapSession : MySessionComponentBase
 	{
 		public static bool LogSetupComplete;
@@ -45,98 +43,66 @@ namespace AwwScrap
 		{
 			InitLogs();
 			MyAPIGateway.Parallel.StartBackground(ScrubCubes);
+			MyAPIGateway.Parallel.StartBackground(SetEfficiency);
+			MyAPIGateway.Parallel.StartBackground(SetAttributes);
 		}
 
-		private static readonly Dictionary<MyStringHash, string> ComponentDictionary = new Dictionary<MyStringHash, string>
-		{
-			{ MyStringHash.GetOrCompute("BulletproofGlass"), "BulletproofGlassScrap" },
-			{ MyStringHash.GetOrCompute("Computer"), "ComputerScrap" },
-			{ MyStringHash.GetOrCompute("Construction"), "ConstructionScrap" },
-			{ MyStringHash.GetOrCompute("Detector"), "DetectorScrap" },
-			{ MyStringHash.GetOrCompute("Display"), "DisplayScrap" },
-			{ MyStringHash.GetOrCompute("Explosives"), "ExplosivesScrap" },
-			{ MyStringHash.GetOrCompute("Girder"), "GirderScrap" },
-			{ MyStringHash.GetOrCompute("GravityGenerator"), "GravityGeneratorScrap" },
-			{ MyStringHash.GetOrCompute("InteriorPlate"), "InteriorPlateScrap" },
-			{ MyStringHash.GetOrCompute("LargeTube"), "LargeTubeScrap" },
-			{ MyStringHash.GetOrCompute("Medical"), "MedicalScrap" },
-			{ MyStringHash.GetOrCompute("MetalGrid"), "MetalGridScrap" },
-			{ MyStringHash.GetOrCompute("Motor"), "MotorScrap" },
-			{ MyStringHash.GetOrCompute("PowerCell"), "PowerCellScrap" },
-			{ MyStringHash.GetOrCompute("RadioCommunication"), "RadioCommunicationScrap" },
-			{ MyStringHash.GetOrCompute("Reactor"), "ReactorScrap" },
-			{ MyStringHash.GetOrCompute("SmallTube"), "SmallTubeScrap" },
-			{ MyStringHash.GetOrCompute("SolarCell"), "SolarCellScrap" },
-			{ MyStringHash.GetOrCompute("SteelPlate"), "SteelPlateScrap" },
-			{ MyStringHash.GetOrCompute("Superconductor"), "SuperconductorScrap" },
-			{ MyStringHash.GetOrCompute("Thrust"), "ThrustScrap" },
-			{ MyStringHash.GetOrCompute("ShieldComponent"), "FieldEmitterScrap" }
-		};
 
-		private static readonly List<MyStringHash> AwwScrapSubTypeIds = new List<MyStringHash>
-		{
-			MyStringHash.GetOrCompute("BulletproofGlassToIngot"),
-			MyStringHash.GetOrCompute("ComputerToIngot"),
-			MyStringHash.GetOrCompute("ConstructionToIngot"),
-			MyStringHash.GetOrCompute("DetectorToIngot"),
-			MyStringHash.GetOrCompute("DisplayToIngot"),
-			MyStringHash.GetOrCompute("ExplosivesToIngot"),
-			MyStringHash.GetOrCompute("GirderToIngot"),
-			MyStringHash.GetOrCompute("GravityGeneratorToIngot"),
-			MyStringHash.GetOrCompute("InteriorPlateToIngot"),
-			MyStringHash.GetOrCompute("LargeTubeToIngot"),
-			MyStringHash.GetOrCompute("MedicalToIngot"),
-			MyStringHash.GetOrCompute("MetalGridToIngot"),
-			MyStringHash.GetOrCompute("MotorToIngot"),
-			MyStringHash.GetOrCompute("PowerCellToIngot"),
-			MyStringHash.GetOrCompute("RadioCommunicationToIngot"),
-			MyStringHash.GetOrCompute("ReactorToIngot"),
-			MyStringHash.GetOrCompute("SmallTubeToIngot"),
-			MyStringHash.GetOrCompute("SolarCellToIngot"),
-			MyStringHash.GetOrCompute("SteelPlateToIngot"),
-			MyStringHash.GetOrCompute("SuperconductorToIngot"),
-			MyStringHash.GetOrCompute("ThrustToIngot")
-		};
-
-		private static bool _skipTieredTech = true;
 
 		private static void ScrubCubes()
 		{
-			// This loop accounts for World Settings for the Assembler Efficiency Modifier (x1, x3, x10)
-			foreach (MyBlueprintDefinitionBase myBlueprintDefinitionBase in AwwScrapSubTypeIds.Select(
-				subtype => MyDefinitionManager.Static.GetBlueprintDefinition(
-					new MyDefinitionId(typeof(MyObjectBuilder_BlueprintDefinition), subtype))))
-			{
-				for (int index = 0; index < myBlueprintDefinitionBase.Results.Length; index++)
-				{	// MyFixedPoint can't do /= operations, so have to do a work around
-					float f = (float) myBlueprintDefinitionBase.Results[index].Amount;
-					f /= MyAPIGateway.Session.SessionSettings.AssemblerEfficiencyMultiplier;
-					myBlueprintDefinitionBase.Results[index].Amount = (MyFixedPoint) f;
-				}
-			}
-			
 			MyPhysicalItemDefinition scrapDef = MyDefinitionManager.Static.GetPhysicalItemDefinition(new MyDefinitionId(typeof(MyObjectBuilder_Ore), "Scrap"));
 			
 			foreach (MyCubeBlockDefinition myCubeBlockDefinition in MyDefinitionManager.Static.GetAllDefinitions().OfType<MyCubeBlockDefinition>().Where(myCubeBlockDefinition => myCubeBlockDefinition?.Components != null))
 			{
 				foreach (MyCubeBlockDefinition.Component component in myCubeBlockDefinition.Components)
 				{
-					GeneralLog.WriteToLog("ScrubCubes", $"{component.Definition.Id.SubtypeId}");
+					//GeneralLog.WriteToLog("ScrubCubes", $"{component.Definition.Id.SubtypeId}");
 
 					if (!component.Definition.Public)
 						continue;
 
 					string subtypeName;
-					if (ComponentDictionary.TryGetValue(component.Definition.Id.SubtypeId, out subtypeName))
+					if (Statics.ComponentDictionary.TryGetValue(component.Definition.Id.SubtypeId, out subtypeName))
 					{
 						component.DeconstructItem = MyDefinitionManager.Static.GetPhysicalItemDefinition(new MyDefinitionId(typeof(MyObjectBuilder_Ore), subtypeName));
 						continue;
 					}
 
-					if (_skipTieredTech)
+					if (Statics.SkipTieredTech)
 						if (component.Definition.Id.SubtypeId.ToString() == "Tech2x" || component.Definition.Id.SubtypeId.ToString() == "Tech4x" || component.Definition.Id.SubtypeId.ToString() == "Tech8x")
 							continue;
 					component.DeconstructItem = scrapDef;
+				}
+			}
+		}
+
+		private static void SetAttributes()
+		{
+			foreach (MyPhysicalItemDefinition item in MyDefinitionManager.Static.GetPhysicalItemDefinitions())
+			{
+				ScrapAttributes scrap;
+				if (!Statics.ScrapAttributesDictionary.TryGetValue(item.Id.SubtypeId, out scrap))
+					continue;
+				//GeneralLog.WriteToLog("SetAttributes", $"Attributes for {item.Id.SubtypeId} are currently Mass: {item.Mass} - Volume: {item.Volume}");
+				item.Mass = scrap.Mass;
+				item.Volume = scrap.Volume / 1000;
+				//GeneralLog.WriteToLog("SetAttributes", $"Attributes for {item.Id.SubtypeId} are now Mass: {item.Mass} - Volume: {item.Volume}");
+			}
+		}
+
+		private static void SetEfficiency()
+		{
+			// This loop accounts for World Settings for the Assembler Efficiency Modifier (x1, x3, x10)
+			foreach (MyBlueprintDefinitionBase myBlueprintDefinitionBase in Statics.AwwScrapSubTypeIds.Select(
+				subtype => MyDefinitionManager.Static.GetBlueprintDefinition(
+					new MyDefinitionId(typeof(MyObjectBuilder_BlueprintDefinition), subtype))))
+			{
+				for (int index = 0; index < myBlueprintDefinitionBase.Results.Length; index++)
+				{   // MyFixedPoint can't do /= operations, so have to do a work around
+					float f = (float)myBlueprintDefinitionBase.Results[index].Amount;
+					f /= MyAPIGateway.Session.SessionSettings.AssemblerEfficiencyMultiplier;
+					myBlueprintDefinitionBase.Results[index].Amount = (MyFixedPoint)f;
 				}
 			}
 		}

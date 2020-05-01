@@ -1,5 +1,5 @@
 # EwwScrap
-Fork of [AwwScrap](https://github.com/Thraxus/AwwScrap) to only refund basic materials for use in conjunction with [Scarce Resources](https://steamcommunity.com/sharedfiles/filedetails/?id=831739660). And not loose the progression tree due to still being able to grind down all type of resources. Note that looting is not handled by this so you might still get a lucky cargo box.
+Fork of [AwwScrap](https://github.com/Thraxus/AwwScrap) to only refund basic materials for use in conjunction with [Scarce Resources](https://steamcommunity.com/sharedfiles/filedetails/?id=831739660). And not loose the progression tree due to still being able to grind down all type of resources. Note that looting is not handled by this so you might still get a lucky cargo container.
 
 Only returning resources that can be mind on earth by replacing scrapped;
 Gold > Nickel
